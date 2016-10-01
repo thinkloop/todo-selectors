@@ -1,5 +1,7 @@
 import combineSelectors from 'combine-selectors';
-import { state, actions, subscribe, constants } from 'todo-redux-state';
+import { state, actions, subscribe, constants as stateConstants } from 'todo-redux-state';
+
+import * as PATHS from './site/constants/paths';
 
 import selectedPage from './site/selected-page';
 import url from './site/url';
@@ -14,6 +16,11 @@ const rawSelectors = {
 };
 
 const selectors = combineSelectors(rawSelectors, () => state);
+
+const constants = {
+	...stateConstants,
+	PATHS
+};
 
 const final = {
 	selectors,
